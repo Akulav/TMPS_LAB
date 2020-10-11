@@ -96,6 +96,7 @@ class OneBuilderImpl extends Builder {
 
 ```
     	Build build = new Build();
+	//Build 4 cars
     	build.buildCar();
     	build.buildCar();
     	build.buildCar();
@@ -114,7 +115,7 @@ class OneBuilderImpl extends Builder {
         carShop.sellCar("Porshe");
 
         
-        //The sold cars are 5, because only 5 were produced.
+        //The sold cars are 4, because only 4 were produced. Cant sell more than the avaiable stock
         System.out.println("Sold cars: " + carShop.soldCars);
         
         //Get total revenue as of sold cars and price
@@ -149,6 +150,6 @@ Installing engine.
 The car was successfully built.
 
 
-Sold cars: 5
-Total revenue: 7000
+Sold cars: 4
+Total revenue: 6000
 ```
