@@ -90,3 +90,65 @@ class OneBuilderImpl extends Builder {
     }
 }
 ```
+
+
+#Results
+
+```
+    	Build build = new Build();
+    	build.buildCar();
+    	build.buildCar();
+    	build.buildCar();
+    	build.buildCar();
+    	
+    	//Instantiate the car Shop
+        CarShop carShop = CarShop.getInstance();
+
+        
+        //Attempt to sell 6 cars
+        carShop.sellCar("Ferrari");
+        carShop.sellCar("Lada");
+        carShop.sellCar("Lada");
+        carShop.sellCar("Lada");
+        carShop.sellCar("Lada");
+        carShop.sellCar("Porshe");
+
+        
+        //The sold cars are 5, because only 5 were produced.
+        System.out.println("Sold cars: " + carShop.soldCars);
+        
+        //Get total revenue as of sold cars and price
+        System.out.println("Total revenue: " + carShop.revenue);
+```
+	
+OUTPUT: 
+	
+
+```
+Building the base of the car.
+Installing wheels.
+Installing engine.
+The car was successfully built.
+
+
+Building the base of the car.
+Installing wheels.
+Installing engine.
+The car was successfully built.
+
+
+Building the base of the car.
+Installing wheels.
+Installing engine.
+The car was successfully built.
+
+
+Building the base of the car.
+Installing wheels.
+Installing engine.
+The car was successfully built.
+
+
+Sold cars: 5
+Total revenue: 7000
+```
