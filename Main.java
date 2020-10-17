@@ -4,11 +4,12 @@ public class Main { // Test
     public static void main(String[] args){
     	
     	//Start the factory and build 5 cars.
-    	Build build = new Build();
-    	build.buildCar();
-    	build.buildCar();
-    	build.buildCar();
-    	build.buildCar();
+        Instantiate.getBuilder();
+        
+    	Instantiate.build.buildCar();
+    	Instantiate.build.buildCar();
+    	Instantiate.build.buildCar();
+    	Instantiate.build.buildCar();
     	
     	//Instantiate the car Shop
         CarShop carShop = CarShop.getInstance();
