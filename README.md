@@ -94,13 +94,13 @@ class OneBuilderImpl extends Builder {
 
 # Results
 
-```
-    	Build build = new Build();
-	//Build 4 cars
-    	build.buildCar();
-    	build.buildCar();
-    	build.buildCar();
-    	build.buildCar();
+```	//No new...
+    	Instantiate.getBuilder();
+        
+    	Instantiate.build.buildCar();
+    	Instantiate.build.buildCar();
+    	Instantiate.build.buildCar();
+    	Instantiate.build.buildCar();
     	
     	//Instantiate the car Shop
         CarShop carShop = CarShop.getInstance();
