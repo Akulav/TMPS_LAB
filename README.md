@@ -4,7 +4,7 @@ Topic: Cars
 Author: Turcan Catalin
 
 
-#Theory
+# Theory
 
 
 I used three patterns: Singleton, Builder, Abstract Factory. 
@@ -16,7 +16,7 @@ Abstract Factory: Lets you select a specific factory implementation from a famil
 Builder: Used to create a complex object using simple objects. It gradually constructs a car from smaller parts. I use it to build a car from 3 other parts (body, engine, wheels).
 
 
-#Implementation
+# Implementation
 
 
 Singleton single instance: 
@@ -92,7 +92,7 @@ class OneBuilderImpl extends Builder {
 ```
 
 
-#Results
+# Results
 
 ```
     	Build build = new Build();
