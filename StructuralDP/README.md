@@ -11,29 +11,27 @@ Main tasks :
 3. Document the work in a separate markdown file;
 
 ##                                                                           Theory :
-In software engineering, structural design patterns are design patterns that ease the design by identifying a simple way to realize relationships between entities.
- 
-Some examples of from this category of design patterns are :
+Example of structural DP.
 
-**1)Adapter**-Allows the conversion of the interface of a class to another interface that clients expect. This allows classes with incompatible interfaces to work together.
+**1)Adapter**
 
-**2)Bridge** -	Allows the separation of an abstract interface from its implementation. This eliminates the dependency between the two, allowing them to be modified independently.
+**2)Bridge**
 
-**3)Composite** -Composite pattern is used where we need to treat a group of objects in similar way as a single object.
+**3)Composite**
 
-**4)Decorator** -Extends the functionality of an object in a manner that is transparent to its clients without using inheritance.
+**4)Decorator**
 
-**5)Facade** -	Provides a higher-level interface to a subsystem of classes, making the subsystem easier to use.
+**5)Facade**
 
-**6)Flyweight** -Flyweight pattern is primarily used to reduce the number of objects created and to decrease memory footprint and increase performance.
+**6)Flyweight**
 
-**7)Proxy** -	Allows a separate object to be used as a substitute to provide controlled access to an object that is not accessible by normal means.
+**7)Proxy**
 
  ##                                                                       Implementation :
 In this project I continued work from the previous laboratory with the Transport domain. I implemented 3 Structural Design Patterns(Facade , Proxy and Adapter) that allows to extend functionalities of the system .
 
 ## 1. Adapter 
-Adapter pattern acts as a connector between two incompatible interfaces that otherwise cannot be connected directly. From my point of view , the usage of this pattern for this domain is very important . We have 2 different types of measurements for the transport , which are Miles/Hour and Kilometer/Hour . In order to convert Miles/Hour I created an adapter for this. I have 2 interfaces **IMass** and **IMassAdapter** that represents 2 incompatible interfaces . Next I created concrete classes that implements **IMass** , which represents maximum mass on bridges (**RuralSpeed**) and speed for interstate roads(**InterstatesSpeed**). To obtain the needed conversion , the **MovableAdapterImplementation** was created , and in this way we obtained the desired results . Following screeshots will define the process of implementing this pattern :
+In software engineering, the adapter pattern is a software design pattern that allows the interface of an existing class to be used as another interface. It is often used to make existing classes work with others without modifying their source code. 
 ```
 public interface IMass {
 	double getMass();
@@ -70,7 +68,7 @@ public class MassAdapterImplementation implements IMassAdapter {
 ```
 
 ## 2.Facade
-Facade pattern is used to hide the complexities of the system. The motivation for usage of this pattern is the following: this pattern involves a single class which provides simplified methods required by client and delegates calls to methods of existing system classes.The purpose of this is to color pieces of a Transport and for this I have the interface **IBodyColor** , and classes(**BodyColor** , **WheelColor** and **HoodColor**) implementing this interface . After that I created the **Painter** class which provides the simplified methods for the client.
+The facade pattern is a software-design pattern commonly used in object-oriented programming. Analogous to a facade in architecture, a facade is an object that serves as a front-facing interface masking more complex underlying or structural code. I use it to add customatization options to a car when bought.
 ```
 public class addOption {
 	   private IcustomInterior leatherInterior;
@@ -97,7 +95,7 @@ public class soundSystem implements IcustomInterior {
 
 
 ## 3. Proxy 
-Proxy pattern is used when a class need to represent functionality of another class . I have the **IRepair** interface , and 2 classes that implements this interface(**TransportService** and **TransportServiceProxy**) . In **TransportService** a have just one method that validates the reservation to service . In order to represent the functionality of this class I implemented the **TransportServiceProxy** , in which I've implemented method that helps us to call to service and schedule your car for some repair.
+A proxy, in its most general form, is a class functioning as an interface to something else. The proxy could interface to anything: a network connection, a large object in memory, a file, or some other resource that is expensive or impossible to duplicate. I use it to book maintenance orders for cars using a class through another class
 ```
 public class bookM implements Scheduler{
 	@Override
@@ -150,7 +148,7 @@ The maximal mass for bridges in US is:6600.000000000001kg
 The maximal mass for roads in US is:19800.0kg
 ```
 
-**In conclusion** , the main goal of this laboratory work was to continue the work from the previous lab and add some new functionalities to the system using the Structural Design Patterns . In order to achieve this , I implemented 3 StructuralDP (Facade , Proxy and Adapter) . Now the client is able to modify the color of different parts of the body , to adapt the speed from Miles/Hour to Km/Hour and to made a reservation for Service.
+**In conclusion** , these design patterns helped maintain a cleaner code and making it less redunant when not needed.
 
 
 
