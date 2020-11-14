@@ -1,10 +1,9 @@
+STDM Laboratory work No.2
+Topic: Structural Design Patterns
+Prepared by : Turcan Catalin , FAF-181
+Evaluated by : Drumea Vasile 
+Main tasks :      
 
-                                                                   STDM Laboratory work No.2
-                                                                   Topic: Structural Design Patterns
-                                                                   Prepared by : Turcan Catalin , FAF-181
-                                                                   Evaluated by : Drumea Vasile 
-                                                                   
-                                                                        Main tasks :      
 1. By extending our project,to implement at least 3 structural design patterns;
 
 2. Keep the files grouped (into packages/directories);
@@ -143,7 +142,13 @@ public class bookMproxy implements Scheduler {
 ```
 
 ##                                                                           Results and Conclusion:
-![results](https://user-images.githubusercontent.com/45829623/98540264-574c7780-2296-11eb-99ff-ade4d9f3a86e.png)
+```
+Premium interior added.
+Premium sound system added
+Scheduled for service succesfully
+The maximal mass for bridges in US is:6600.000000000001kg
+The maximal mass for roads in US is:19800.0kg
+```
 
 **In conclusion** , the main goal of this laboratory work was to continue the work from the previous lab and add some new functionalities to the system using the Structural Design Patterns . In order to achieve this , I implemented 3 StructuralDP (Facade , Proxy and Adapter) . Now the client is able to modify the color of different parts of the body , to adapt the speed from Miles/Hour to Km/Hour and to made a reservation for Service.
 
