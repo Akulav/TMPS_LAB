@@ -1,4 +1,4 @@
-package proxy;
+package StructuralDP.proxy;
 
 public class bookMproxy implements Scheduler {
 	private boolean isScheduled;

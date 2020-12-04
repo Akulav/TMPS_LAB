@@ -1,4 +1,4 @@
-package facade;
+package StructuralDP.facade;
 
 public class leatherInterior implements IcustomInterior {
 	 public void addOptions() {

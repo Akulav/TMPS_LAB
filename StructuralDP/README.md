@@ -1,154 +1,155 @@
-STDM Laboratory work No.2
-Topic: Structural Design Patterns
-Prepared by : Turcan Catalin , FAF-181
-Evaluated by : Drumea Vasile 
-Main tasks :      
+# TMPS_LAB1
 
-1. By extending our project,to implement at least 3 structural design patterns;
+Topic: Cars
+Author: Turcan Catalin
 
-2. Keep the files grouped (into packages/directories);
 
-3. Document the work in a separate markdown file;
+# Theory
 
-##                                                                           Theory :
-Example of structural DP.
 
-**1)Adapter**
+I used three patterns: Singleton, Builder, Abstract Factory. 
 
-**2)Bridge**
+Singleton: Restricts the creation of a class to a single instance, and provides access to that single instance. I used it to create a Car Shop. Only 1 car shop is allowed to exist so that we can correctly count at any time the number of sold cars and/or revenue.
 
-**3)Composite**
+Abstract Factory: Lets you select a specific factory implementation from a family of possible factories. I use it to get prices for the cars, so that the revenue of the shop can be calculated. 
 
-**4)Decorator**
+Builder: Used to create a complex object using simple objects. It gradually constructs a car from smaller parts. I use it to build a car from 3 other parts (body, engine, wheels).
 
-**5)Facade**
 
-**6)Flyweight**
+# Implementation
 
-**7)Proxy**
 
- ##                                                                       Implementation :
-In this project I continued work from the previous laboratory with the Transport domain. I implemented 3 Structural Design Patterns(Facade , Proxy and Adapter) that allows to extend functionalities of the system .
-
-## 1. Adapter 
-In software engineering, the adapter pattern is a software design pattern that allows the interface of an existing class to be used as another interface. It is often used to make existing classes work with others without modifying their source code. 
+Singleton single instance: 
 ```
-public interface IMass {
-	double getMass();
-}
-
-public class BridgeMaxMass implements IMass {
-	@Override
-    public double getMass() {
-        return 3000;
-         }
-}
-
-public interface IMassAdapter {
-	double getMass();
-}
-
-public class MassAdapterImplementation implements IMassAdapter {
-	private IMass mass;
-
-    public MassAdapterImplementation(IMass mass) {
-        this.mass = mass;
+public static CarShop getInstance() {
+        if (instance == null) {
+            instance = new CarShop();
+		}
+        return instance;
     }
-
-    @Override
-    public double getMass() {
-        double lb = mass.getMass();
-        return convertMPHtoKMPH(lb);
-    }
-
-    private double convertMPHtoKMPH(double kg){
-        return kg*2.20;
-    }
-}
 ```
 
-## 2.Facade
-The facade pattern is a software-design pattern commonly used in object-oriented programming. Analogous to a facade in architecture, a facade is an object that serves as a front-facing interface masking more complex underlying or structural code. I use it to add customatization options to a car when bought.
+Abstract factory price list for three types of cars
+
 ```
-public class addOption {
-	   private IcustomInterior leatherInterior;
-	   private IcustomInterior soundSystem;
-
-	   public addOption() {
-		   leatherInterior = new leatherInterior();
-		   soundSystem = new soundSystem();
-	   }
-	   
-	   public void tuneCar(){
-		      leatherInterior.addOptions();
-			   soundSystem.addOptions();
-		   }		
+interface Lada {
+    long getLadaPrice();
 }
-
-public class soundSystem implements IcustomInterior {
-	   @Override
-	   public void addOptions() {
-	      System.out.println("Premium sound system added");
-	   }
-	}
-```
-
-
-## 3. Proxy 
-A proxy, in its most general form, is a class functioning as an interface to something else. The proxy could interface to anything: a network connection, a large object in memory, a file, or some other resource that is expensive or impossible to duplicate. I use it to book maintenance orders for cars using a class through another class
-```
-public class bookM implements Scheduler{
-	@Override
-    public void book() {
-	}
+interface Ferrari {
+    long getFerrariPrice();
 }
-
-public interface Scheduler {
-	void book();
+interface Porshe {
+    long getPorshePrice();
 }
-
-public class bookMproxy implements Scheduler {
-	private boolean isScheduled;
-    private bookM bookM;
-
-    public bookMproxy() {
-        this.isScheduled = false;
-        this.bookM = new bookM();
+interface InteAbsFactory {
+    Lada getLada();
+    Ferrari getFerrari();
+    Porshe getPorshe();
+}
+class LadaImpl implements Lada { // First
+    public long getLadaPrice() {
+        return (int)1000;
     }
-
-    public boolean isScheduled(){
-        return isScheduled;
+}
+class FerrariImpl implements Ferrari {
+    public long getFerrariPrice() {
+        return (int)3000;
     }
-    public void setScheduled(boolean scheduled){
-        isScheduled = scheduled;
+}
+class PorsheImpl implements Porshe {
+    public long getPorshePrice() {
+        return (int)2000;
     }
-
-    private void scheduleByPhone(){
-        System.out.println("Scheduled for service succesfully");
-        this.isScheduled = true;
+}
+class CarPriceAbsFactory implements InteAbsFactory {
+    public Lada getLada() {
+        return new LadaImpl();
     }
-
-    @Override
-    public void book() {
-        scheduleByPhone();
-        if(this.isScheduled){
-            this.bookM.book();
-        }
-
+    public Ferrari getFerrari() {
+        return new FerrariImpl();
+    }
+    public Porshe getPorshe() {
+        return new PorsheImpl();
     }
 }
 ```
 
-##                                                                           Results and Conclusion:
+Builder car building process
+
 ```
-Premium interior added.
-Premium sound system added
-Scheduled for service succesfully
-The maximal mass for bridges in US is:6600.000000000001kg
-The maximal mass for roads in US is:19800.0kg
+class OneBuilderImpl extends Builder {
+    public OneBuilderImpl(){
+        car = new Car();
+    }
+    public Car buildCar() {
+        car.buildBase();
+        car.buildWheels();
+        Engine engine = new EngineOne();
+        car.buildEngine(engine);
+        return car;
+    }
+}
 ```
 
-**In conclusion** , these design patterns helped maintain a cleaner code and making it less redunant when not needed.
+
+# Results
+
+```	//No new...
+    	Instantiate.getBuilder();
+        
+    	Instantiate.build.buildCar();
+    	Instantiate.build.buildCar();
+    	Instantiate.build.buildCar();
+    	Instantiate.build.buildCar();
+    	
+    	//Instantiate the car Shop
+        CarShop carShop = CarShop.getInstance();
+
+        
+        //Attempt to sell 6 cars
+        carShop.sellCar("Ferrari");
+        carShop.sellCar("Lada");
+        carShop.sellCar("Lada");
+        carShop.sellCar("Lada");
+        carShop.sellCar("Lada");
+        carShop.sellCar("Porshe");
+
+        
+        //The sold cars are 4, because only 4 were produced. Cant sell more than the avaiable stock
+        System.out.println("Sold cars: " + carShop.soldCars);
+        
+        //Get total revenue as of sold cars and price
+        System.out.println("Total revenue: " + carShop.revenue);
+```
+	
+OUTPUT: 
+	
+
+```
+Building the base of the car.
+Installing wheels.
+Installing engine.
+The car was successfully built.
 
 
+Building the base of the car.
+Installing wheels.
+Installing engine.
+The car was successfully built.
 
+
+Building the base of the car.
+Installing wheels.
+Installing engine.
+The car was successfully built.
+
+
+Building the base of the car.
+Installing wheels.
+Installing engine.
+The car was successfully built.
+
+
+Sold cars: 4
+Total revenue: 6000
+```

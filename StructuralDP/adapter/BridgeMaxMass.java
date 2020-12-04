@@ -1,4 +1,4 @@
-package adapter;
+package StructuralDP.adapter;
 
 public class BridgeMaxMass implements IMass {
 	@Override

@@ -1,4 +1,4 @@
-package adapter;
+package StructuralDP.adapter;
 
 public class RoadMaxMass implements IMass {
 	@Override
